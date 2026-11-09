@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>charlotte song</title>
+  <meta name="description" content="Charlotte Song — computer science + business administration at USC. Work, projects, and how to reach me." />
+  <meta property="og:title" content="charlotte song" />
+  <meta property="og:description" content="computer science + business @ usc" />
+  <meta property="og:image" content="assets/hero-clouds.png" />
+  <meta name="theme-color" content="#6188C5" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%236188C5'/%3E%3Cg fill='%23fff'%3E%3Crect x='3' y='3' width='2' height='2'/%3E%3Crect x='7' y='3' width='2' height='2'/%3E%3Crect x='11' y='3' width='2' height='2'/%3E%3Crect x='5' y='7' width='2' height='2'/%3E%3Crect x='9' y='7' width='2' height='2'/%3E%3Crect x='3' y='11' width='2' height='2'/%3E%3Crect x='7' y='11' width='2' height='2'/%3E%3Crect x='11' y='11' width='2' height='2'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Nunito:wght@400;600;700&family=Sniglet:wght@400;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#about">skip to content</a>
+
+  <!-- ───────── nav ───────── -->
+  <header class="nav" id="nav">
+    <a class="nav-mark" href="#top" aria-label="back to top">cs<span class="blink">_</span></a>
+    <nav class="nav-links" aria-label="primary">
+      <a href="#about" data-nav="about">about</a>
+      <a href="#desktop" data-open="work">work</a>
+      <a href="#desktop" data-open="projects">projects</a>
+      <button type="button" data-open-resume class="hide-sm">resume</button>
+      <a href="#contact" data-nav="contact">contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ───────── hero: live dot-matrix of the cloud image ───────── -->
+    <section class="hero" id="top" aria-label="intro">
+      <canvas class="hero-canvas" id="clouds" aria-hidden="true"></canvas>
+      <noscript><img class="hero-fallback" src="assets/hero-clouds.png" alt="" /></noscript>
+      <div class="hero-copy">
+        <h1 class="hero-name" id="hero-name">charlotte song</h1>
+        <p class="hero-tag"><span id="hero-tag">computer science + business @ usc</span><span class="caret" aria-hidden="true"></span></p>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="scroll to about">
+        <span>scroll</span>
+        <span class="cue-dots" aria-hidden="true">·<br>·<br>↓</span>
+      </a>
+    </section>
+
+    <canvas class="dither-band" data-from="#ffffff" data-to="#6188C5" aria-hidden="true"></canvas>
+
+    <!-- ───────── about: bunnies hop in a ring ───────── -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <canvas class="bunny-canvas" id="bunnies" aria-hidden="true"></canvas>
+      <div class="about-copy" id="about-copy">
+        <h2 id="about-title">about me</h2>
+        <div id="about-text"></div>
+      </div>
+    </section>
+
+    <!-- ───────── desktop: folders that burst open ───────── -->
+    <section class="desktop" id="desktop" aria-labelledby="desktop-title">
+      <div class="desk-head">
+        <p class="mono desk-path" id="desk-path">~/charlotte/desktop</p>
+        <h2 class="sr-only" id="desktop-title">work and projects</h2>
+        <p class="mono desk-hint" id="desk-hint"><span class="hint-fine">double-click a folder to open it</span><span class="hint-touch">tap a folder to open it</span></p>
+      </div>
+      <div class="stage" id="stage">
+        <button type="button" class="back-btn mono" id="back-btn" hidden>← desktop</button>
+      </div>
+    </section>
+
+    <canvas class="dither-band" data-from="#6188C5" data-to="#ffffff" aria-hidden="true"></canvas>
+
+    <!-- ───────── contact ───────── -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <p class="mono eyebrow">~/contact</p>
+      <h2 id="contact-title">let's talk</h2>
+      <p class="contact-sub">always happy to chat about product, hackathons, or whatever you're building.</p>
+      <div class="contact-links">
+        <button type="button" class="pill" id="copy-email">[ copy email ]</button>
+        <a class="pill" id="link-linkedin" target="_blank" rel="noopener">[ linkedin ↗ ]</a>
+        <a class="pill" id="link-github" target="_blank" rel="noopener">[ github ↗ ]</a>
+        <button type="button" class="pill pill-solid" data-open-resume>[ resume ]</button>
+      </div>
+      <p class="mono email-line" id="email-line"></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <canvas class="foot-canvas" id="foot-clouds" aria-hidden="true"></canvas>
+    <p class="mono foot-line">© 2026 charlotte song · drawn with <span id="dot-count">thousands of</span> dots and 8 bunnies</p>
+  </footer>
+
+  <!-- ───────── file window ───────── -->
+  <div class="win-layer" id="win-layer" hidden>
+    <div class="win-backdrop" data-close></div>
+    <div class="win" id="win" role="dialog" aria-modal="true" aria-labelledby="win-title" tabindex="-1">
+      <div class="win-bar">
+        <span class="win-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="mono win-path" id="win-path"></span>
+        <button type="button" class="mono win-close" data-close aria-label="close window">[ esc ]</button>
+      </div>
+      <div class="win-body" id="win-body"></div>
+      <div class="win-foot mono" id="win-foot"></div>
+    </div>
+  </div>
+
+  <div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="content.js"></script>
+  <script src="dots.js"></script>
+  <script src="bunny.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
